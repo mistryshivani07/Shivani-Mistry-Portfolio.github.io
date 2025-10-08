@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shivani Mistry — Psychology Portfolio</title>
+  <meta name="description" content="Portfolio of Shivani Mistry — mental health, community development, research." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#f7faf9;
+      --card:#ffffff;
+      --ink:#1f2a24;
+      --muted:#5d6b65;
+      --brand:#2e6d5e;    /* calming sage/teal */
+      --brand-ink:#1f4d42;
+      --border:#e4ece9;
+      --shadow:0 6px 24px rgba(0,0,0,.06);
+      --radius:14px;
+      --maxw:1040px;
+      --glow:0 0 0 3px rgba(46,109,94,.18), 0 6px 24px rgba(0,0,0,.06);
+    }
+
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    a:focus-visible{outline:3px solid rgba(46,109,94,.35);outline-offset:2px}
+    img{max-width:100%;height:auto}
+
+    .wrap{max-width:var(--maxw);margin:auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(247,250,249,.95);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border);z-index:50}
+    nav{display:flex;align-items:center;justify-content:space-between;max-width:var(--maxw);margin:auto;padding:10px 24px}
+    nav .name{font-weight:700;letter-spacing:.2px}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px;display:inline-block;transition:transform .12s ease}
+    nav a:hover{background:#ebf3f0}
+    nav a:active{transform:scale(.98)} /* tiny press feedback */
+
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:20px 24px 8px}
+    .badge{display:inline-block;background:#eaf4f1;color:var(--brand-ink);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:.9rem}
+    h1{font-size:clamp(28px,4vw,40px);line-height:1.15;margin:.5rem 0}
+    .sub{color:var(--muted)}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);transition:transform .14s ease, box-shadow .14s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .btn.primary{background:var(--brand);color:#fff;border-color:transparent}
+
+    .grid{display:grid;gap:16px}
+    @media(min-width:860px){
+      .two{grid-template-columns:1fr 1fr}
+      .three{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:859px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    section{margin:28px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+    h2{font-size:1.25rem;margin:0 0 12px}
+    h3{font-size:1.05rem;margin:0 0 6px}
+    .meta{color:var(--muted);font-size:.95rem}
+    ul{margin:8px 0 0 18px}
+    .kpis{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .kpi{background:#eef6f3;border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-weight:600;color:var(--brand-ink)}
+    .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:6px 10px;margin:4px;background:#fbfdfc}
+    .list-compact li{margin:4px 0}
+    footer{border-top:1px solid var(--border);margin-top:36px}
+    .foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:18px 24px;color:var(--muted)}
+
+    /* ---------- Effects ---------- */
+
+    /* Pop animation class we add on anchor navigation */
+    .pop-animate{
+      animation:pop .42s cubic-bezier(.2,.9,.2,1);
+      box-shadow:var(--glow);
+      outline:0; /* the glow serves as a highlight */
+    }
+    @keyframes pop{
+      0%{transform:scale(.98)}
+      60%{transform:scale(1.02)}
+      100%{transform:scale(1)}
+    }
+
+    /* Reveal on scroll (JS toggles .is-visible) */
+    .reveal{opacity:0; transform:translateY(8px)}
+    .reveal.is-visible{opacity:1; transform:none; transition:opacity .5s ease, transform .5s ease}
+
+    /* Fallback highlight when navigating via hash without JS */
+    :target{
+      scroll-margin-top:72px; /* keeps it from hiding under the sticky header */
+      box-shadow:var(--glow);
+    }
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      .btn, nav a{transition:none}
+      .reveal{opacity:1; transform:none}
+      .pop-animate{animation:none}
+    }
+
+    /* print */
+    @media print{
+      header,.btns{display:none}
+      body{background:#fff}
+      .card{box-shadow:none}
+      a{color:#000;text-decoration:underline}
+    }
+  </style>
+
+  <!-- Structured data for better search snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shivani Mistry",
+    "jobTitle": "Mental Health Professional",
+    "url": "https://example.com",
+    "email": "mailto:mistryshivani07@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Dublin", "addressCountry": "IE" },
+    "sameAs": ["https://www.linkedin.com/in/mistryshivani"]
+  }
+  </script>
+</head>
+
+<body>
+<header aria-label="Primary">
+  <nav>
+    <div class="name">Shivani Mistry</div>
+    <ul role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#highlights">Highlights</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certs">Certs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap" id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="badge">Peer Support · Mental Health Promotion · Community Development</span>
+      <h1>Helping people feel safe, heard, and supported.</h1>
+      <p class="sub">
+        Mental health professional with 5+ years in peer-led initiatives, crisis response, and trauma-informed care.
+        Grounded in lived experience of anxiety recovery. Skilled in de-escalation, self-care planning, and peer-informed facilitation.
+        Strong knowledge of mental health services and GDPR-compliant practice.
+      </p>
+      <div class="btns" aria-label="Calls to action">
+        <a class="btn primary" href="#contact">Contact me</a>
+        <a class="btn" href="mailto:mistryshivani07@gmail.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/mistryshivani" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="C:\Users\shivani\Desktop\Portfolio\Shivani Mistry CV.pdf" download>Download CV</a>
+      </div>
+      <div class="kpis" aria-label="Impact">
+        <div class="kpi">10+ workshops delivered</div>
+        <div class="kpi">200+ people reached</div>
+        <div class="kpi">5+ yrs experience</div>
+      </div>
+    </div>
+
+    <!-- Optional photo (replace src with your headshot) -->
+    <figure class="card" aria-label="Profile photo and quick facts">
+      <img src="C:\Users\shivani\Desktop\Portfolio\Portfolio_headshotv1.jpg" alt="Professional headshot of Shivani Mistry" />
+    </figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="card" aria-label="About Shivani">
+    <h2>About</h2>
+    <p>
+      I bring empathy, insight, and a recovery-focused approach to community and clinical settings.
+      I’ve built partnerships with schools, voluntary organisations, and clinical teams to support diverse populations.
+      Certified in counselling and anxiety management and a Graduate Member of the Psychological Society of Ireland (PSI).
+      Proficient in Microsoft Office, Google Workspace, and GDPR-compliant documentation.
+    </p>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section id="highlights" class="grid two" aria-label="Highlights">
+    <div class="card">
+      <h2>What I offer</h2>
+      <ul class="list-compact">
+        <li>Empathetic, person-centred support rooted in psychological understanding and trauma-informed care.</li>
+        <li>Experience designing and delivering wellbeing workshops that build awareness, resilience, and community connection.</li>
+        <li>Strong background in recruitment and coaching, helping individuals identify strengths and reach personal or professional goals.</li>
+        <li>Practical experience in crisis response, active listening, and de-escalation in high-stress situations.</li>
+        <li>Collaborative approach to program development, from planning and facilitation to feedback and evaluation.</li>
+        <li>Excellent communication and organizational skills, with a proven ability to manage multiple projects and support diverse teams.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Focus areas</h2>
+      <div aria-label="Focus tags">
+        <span class="pill">Psychological Wellbeing & Mental Health Support</span>
+        <span class="pill">Recruitment & Coaching</span>
+        <span class="pill">Wellbeing Program Developemt</span>
+        <span class="pill">Crisis Support & Intervention</span>
+        <span class="pill">Psychoeducation & Group Facilitation</span>
+        <span class="pill">Community Engagement & Inclusion</span>
+        <span class="pill">Research-Informed Practice</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" aria-label="Experience">
+    <div class="grid two">
+      <div class="card">
+        <h2>Experience</h2>
+
+        <article>
+          <h3>Volunteer — Crisis Hotline Counsellor</h3>
+          <div class="meta">Text About It · Dublin · Aug 2025 – Present</div>
+          <ul>
+            <li>Confidential frontline support for people in distress, including crisis and suicidal ideation.</li>
+            <li>Active listening and de-escalation to ensure safety and trust; accurate, GDPR-aligned records.</li>
+            <li>Collaborate with supervisors and volunteers to deliver person-centred, evidence-based support.</li>
+          </ul>
+        </article>
+        <hr />
+
+        <article>
+          <h3>Mental Health Lead & Co-Founder</h3>
+          <div class="meta">Citizen of Mind · Pune (Remote) · Jun 2019 – Present</div>
+          <ul>
+            <li>Co-founded a peer-led initiative focused on psychoeducation, promoting recovery, stigma reduction, and emotional wellbeing for youth and adults.</li>
+            <li>Designed and facilitated psychoeducational workshops in schools and organizations, empowering 200+ participants. </li>
+            <li>Co-produced multilingual mental health resources with clinicians and educators, ensuring accessibility and cultural inclusivity.</li>
+            <li>Directed organizational operations including recruitment, budgeting, marketing, community engagement, and website development while authoring content.</li>
+          </ul>
+        </article>
+
+        <hr />
+        <article>
+          <h3>HR Generalist</h3>
+          <div class="meta">QTrainers · Mumbai · Aug 2021 – Dec 2022</div>
+          <ul>
+            <li>Led end-to-end recruitment including sourcing, interviewing, and onboarding across multiple departments.</li>
+            <li>Delivered employee coaching and training sessions focused on performance, communication, and professional growth.</li>
+            <li>Supported the design and rollout of workplace wellbeing programs that promoted engagement and resilience.</li>
+            <li>Collaborated with management to strengthen organizational culture and staff retention.</li>
+            <li>Maintained HR records, payroll data, and compliance with internal policies and employment regulations.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="card">
+        <h2>Additional roles</h2>
+
+        <article>
+          <h3>Retail Assistant</h3>
+          <div class="meta">Hale Vaping · Dublin · Dec 2024 – Present</div>
+          <ul>
+            <li>Manage day-to-day retail operations including stocktaking, ordering new stock, and maintaining product displays.</li>
+            <li>Ensure store organization, cleanliness, and compliance with safety and operational standards</li>
+            <li>Provide friendly and informed customer service in a fast-paced environment.</li>
+          </ul>
+        </article>
+
+        <hr />
+        <article>
+          <h3>Optical Assistant</h3>
+          <div class="meta">Specsavers · Dublin · Aug 2023 – Nov 2024</div>
+          <ul>
+            <li>Supported anxious, neurodivergent, and multilingual patients in a busy clinical setting with empathy and professionalism.</li>
+            <li>Handled back-office duties including answering calls, scheduling appointments, managing emails, and maintaining records.</li>
+            <li>Processed PRSI and medical form claims accurately while ensuring GDPR compliance.</li>
+            <li>Assisted customers in choosing suitable frames and lens types, dispensing glasses, and coordinating collections for new eyewear.</li>
+            <li>Collaborated with optometrists and clinical staff to ensure smooth patient flow and high-quality care.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="card" aria-label="Projects & Highlights">
+    <h2>Projects & Highlights</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>Stress Management Workshops</h3>
+        <p>Designed peer-led wellbeing sessions for schools/community groups; evidence-based coping skills and self-care planning.</p>
+      </div>
+      <div class="card">
+        <h3>Multilingual Psychoeducation</h3>
+        <p>Produced accessible mental health materials in collaboration with clinicians and educators to widen reach.</p>
+      </div>
+      <div class="card">
+        <h3>Community Mental Health Programs</h3>
+        <p>Delivered initiatives from concept to evaluation; built partnerships with schools, NGOs, and clinical teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="grid two" aria-label="Skills and Tools">
+    <div class="card">
+      <h2>Skills</h2>
+      <ul class="list-compact">
+        <li>Peer support & recovery conversations</li>
+        <li>Crisis prevention, de-escalation & intervention</li>
+        <li>Trauma-informed, person-centred practice</li>
+        <li>Psychoeducation & group facilitation</li>
+        <li>Community engagement & inclusive communication</li>
+        <li>GDPR-compliant record keeping</li>
+        <li>Wellbeing programme design & delivery</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Tools & Methods</h2>
+      <ul class="list-compact">
+        <li>Microsoft Office · Google Workspace</li>
+        <li>Secure documentation & safeguarding workflows</li>
+        <li>Survey & evaluation design (add SPSS/Qualtrics if applicable)</li>
+        <li>Workshop facilitation toolkits and slide decks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTS -->
+  <section id="education" class="grid two" aria-label="Education and Certifications">
+    <div class="card">
+      <h2>Education</h2>
+      <p><strong>MSc, Psychology & Wellbeing</strong> — Dublin City University, 2022–2023</p>
+      <p><strong>BA, Psychology</strong> — Modern College of Arts, Science & Commerce, 2018–2021</p>
+    </div>
+
+    <div class="card" id="certs">
+      <h2>Certifications & Membership</h2>
+      <ul class="list-compact">
+        <li>Graduate Member — Psychological Society of Ireland (PSI)</li>
+        <li>Counselling Practitioner — The Academy of Modern Applied Psychology</li>
+        <li>Diploma: Anxiety & Panic Attack — International Association of Therapists</li>
+        <li>An Introduction to Children First — HSE & TUSLA</li>
+        <li>LGBTQ+ Awareness & Inclusion — HSELand</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="card">
+    <h2>Personal Projects</h2>
+    <ul class="list-compact">
+      <li><a href="C:\Users\shivani\Desktop\Portfolio\KALEIDOSCOPE Volune XIII final-merged.pdf" target="_blank" rel="noopener">Mental Health in Pandemic Article (PDF)</a></li>
+      <li><a href="https://mistryshivani.blogspot.com/?m=1" target="_blank" rel="noopener">Inner Voice Blog </a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="card" aria-label="Contact">
+    <h2>Contact</h2>
+    <p>Open to roles in peer support, mental health promotion, community development, clinical support, research assistance, and HR wellbeing.</p>
+    <p>✉️ <a href="mailto:mistryshivani07@gmail.com">mistryshivani07@gmail.com</a> · 🔗 <a href="https://www.linkedin.com/in/mistryshivani" target="_blank" rel="noopener">linkedin.com/in/mistryshivani</a> · 📍 Dublin, Ireland</p>
+  </section>
+</main>
+
+<footer>
+  <div class="foot wrap">
+    <span>© <span id="y"></span> Shivani Mistry</span>
+    <span><a href="#top">Back to top</a></span>
+  </div>
+</footer>
+
+<script>
+  // current year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // prefers-reduced-motion check
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Smooth scroll + pop highlight on internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+
+        // Smooth scroll (or instant if reduced motion)
+        el.scrollIntoView({behavior: prefersReduced ? 'auto' : 'smooth', block:'start'});
+
+        // pick the element to "pop" (prefer a card inside, else the section)
+        const targetForPop = el.closest('.card') || el.querySelector('.card') || el;
+
+        // add pop class slightly after scroll starts so it triggers near arrival
+        const delay = prefersReduced ? 0 : 260; // small delay to sync with scroll
+        setTimeout(()=>{
+          targetForPop.classList.add('pop-animate');
+          // remove once animation ends so it can be re-applied on next click
+          const cleanup = ()=>{
+            targetForPop.classList.remove('pop-animate');
+            targetForPop.removeEventListener('animationend', cleanup);
+          };
+          targetForPop.addEventListener('animationend', cleanup);
+        }, delay);
+      }
+    });
+  });
+
+  // Reveal-on-scroll for cards and major sections
+  const revealEls = [
+    ...document.querySelectorAll('.card'),
+    ...document.querySelectorAll('section:not(.hero)')
+  ];
+
+  // add initial class
+  revealEls.forEach(el => el.classList.add('reveal'));
+
+  // if reduced motion, show everything immediately
+  if(prefersReduced){
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+    revealEls.forEach(el => io.observe(el));
+  }
+</script>
+</body>
+</html>
